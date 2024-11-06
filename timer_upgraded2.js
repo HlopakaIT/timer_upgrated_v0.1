@@ -5,13 +5,14 @@ timerCreatorButton.addEventListener("click", createOrChangeTimer);
 let timer;
 let pause;
 let reset;
+const writeArea = document.getElementById("write-area");
+
 
 function createTimer() {
 
     timer = document.createElement("p");
     timer.className = "timer";
     const content = document.getElementById("content");
-    const writeArea = document.getElementById("write-area");
 
     timer.innerHTML = writeArea.value;
     content.append(timer);
@@ -46,6 +47,12 @@ function createTimer() {
 
 
 function createOrChangeTimer() {
+    if(writeArea.value <= 0) {
+        alert("Enter a number greater than 0");
+        return 
+    } 
+
+
     if(!timer) {
         createTimer()
     } else {
